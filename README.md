@@ -32,6 +32,29 @@ To set it up I followed the following procedures:
 <img width="1668" height="426" alt="image" src="https://github.com/user-attachments/assets/b464fea4-9c94-4b9f-91e9-f381b54886da" />
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<h1>Creating a conditional Policy in Entra ID </h1>
+
+Here we are trying to create a conditional access policy for Impossible travel
+For this go to entra.microsoft.com. Click on ID Protection > Dashboard > Conditional Access > Named Locations > Countries Location.
+<img width="1902" height="669" alt="image" src="https://github.com/user-attachments/assets/8b88ac48-3a0d-4548-98ab-4eea88338852" />
+
+Click on Countries Location
+<img width="729" height="1197" alt="image" src="https://github.com/user-attachments/assets/8f58686f-ecae-4404-ba6e-92e396f045be" />
+
+Suppose in our company all of them are in Canada and there is no employee working from other countries. Fill out the details. Click on Create.
+
+Note: Also make sure that Security Defaults is disabled before enabling your own policy. After disabling click on Save.
+<img width="521" height="1199" alt="image" src="https://github.com/user-attachments/assets/6800e226-cfa0-4564-b66f-c7d295b1476d" />
+
+After this Click on Conditional Access > New Policy.Then enter the policy name. I have written as MYDFIR-devraj-CAPolicy.
+Under Users select the users you want to include. For condition
+<img width="1078" height="1213" alt="image" src="https://github.com/user-attachments/assets/8d8f7a90-1617-40fd-9b7e-a3a547f3d11a" />
+
+For condition you can include the Blocked countries policy which you just have created.
+<img width="3084" height="1037" alt="image" src="https://github.com/user-attachments/assets/dd3c64f0-3008-418b-8114-7c5fce038c93" />
+
+Now For example an employee of our company will try to access outlook from countries except canada, then this will show on during login.
+<img width="541" height="446" alt="image" src="https://github.com/user-attachments/assets/6d735098-0adc-4759-803f-9e138329048e" />
 
 
  
