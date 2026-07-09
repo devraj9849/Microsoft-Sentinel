@@ -58,7 +58,21 @@ Now For example an employee of our company will try to access outlook from count
 
 
  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+<h1>Connecting Microsoft Entra ID logs into Microsoft Sentinel</h1>
+To begin start heading into portal.azure.com
+Head into Microsoft Sentinel which you have created and go to Content Hub. For me at this time it is saying this portal has been moved to Microsoft Defender XDR. Just click into it and search for Entra ID and install it.
 <img width="3376" height="1270" alt="2026-07-09 17_14_29-Content hub - Microsoft Defender" src="https://github.com/user-attachments/assets/d9e3eada-a628-4515-8f58-817f7721a186" />
 
-   
+After this click on Microsoft Sentinel > Configuration > Data connectors.
+Select Microsoft Entra and Open connectors page.
+<img width="3387" height="1246" alt="image" src="https://github.com/user-attachments/assets/1bd7649d-73c6-447e-94fe-3ae42b74ca25" />
+
+After this, Select Sign-in Logs and Audit Logs and click on Apply changes.
+<img width="1021" height="735" alt="image" src="https://github.com/user-attachments/assets/a0e07b98-2ff8-4732-affb-5e1450fe1313" />
+
+Now we want to generate some kind of activity so i head towards my outlook account and login. 
+
+After this I login with the bob account which we have created before to generate some telemetry.
+
+
+ 
