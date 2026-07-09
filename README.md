@@ -57,6 +57,8 @@ Now For example an employee of our company will try to access outlook from count
 <img width="541" height="446" alt="image" src="https://github.com/user-attachments/assets/6d735098-0adc-4759-803f-9e138329048e" />
 
 
- 
-   
+ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<img width="3376" height="1270" alt="2026-07-09 17_14_29-Content hub - Microsoft Defender" src="https://github.com/user-attachments/assets/d9e3eada-a628-4515-8f58-817f7721a186" />
+
    
