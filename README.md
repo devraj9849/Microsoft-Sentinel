@@ -4,25 +4,30 @@ Microsoft Azure - portal.azure.com
 Microsoft Defender XDR portal - security.microsoft.com
 It will include your defender for endpoint, defender for office, defender for identity and much more.
 Microsoft Intune - https://intune.microsoft.com/#home
+Entra ID protection - entra.microsoft.com
 
 1 Module 1
-a. Starting Microsoft 365 E5 (no teams) (trial) and assigning license
-b. Creating a resource group
-c. Creating a windows 11 virtual machine
-d. Creating a Microsoft Sentinel
-e. Generating the telemetry from Microsoft Sentinel Training lab from Content Hub
-f. Installing a Microsoft Sentinel XDR
-g. Creating a detection rule for brute force attack
+	a. Starting Microsoft 365 E5 (no teams) (trial) and assigning license
+	b. Creating a resource group
+	c. Creating a windows 11 virtual machine
+	d. Creating a Microsoft Sentinel
+	e. Generating the telemetry from Microsoft Sentinel Training lab from Content Hub
+	f. Installing a Microsoft Sentinel XDR
+	g. Creating a detection rule for brute force attack
 
 2. Module 2 : Email Security with Microsoft Defender for Office 365
    A. Creating two users
    B. Adding Anti-Phishing Protection Policy
 
 3. Module 3 : Endpoint Security
-   A.Configuring EDR
+   A. Configuring EDR
    B. Onboarding the test vm
    C. Integrating microsoft Intune to the endpoint
-   
+   D. Creating Attack Surface reduction rules
+
+4. Module 4: Identity
+   A. Creating a conditional Access Policy for Impossible travel
+   B. Connecting Microsoft Entra ID logs into Microsoft Sentinel
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 <h1>a.Starting Microsoft 365 E5 (no teams) and assigning license to it </h1>
 
@@ -208,7 +213,7 @@ This rule will now trigger an alert if an account has more than 1000 failed logo
 <h1>Module 2 : Email Security with Microsoft Defender for Office 365</h1>
 It will allow us to simulate, detect and investigate phishing threats.  
 
-A. Creating two users
+<h1>A. Creating two users</h1>
 
 - For this heading over to admin.microsoft.com and signing it with my credentials.
 - Click on add user which is on top of the page.
@@ -219,7 +224,8 @@ A. Creating two users
 - To do that we can just simply type in outlook.office.com and login with the email and password which we just created above.
 -  Then we go to URL security.microsoft.com (Microsoft Defender XDR) and select Email and collaboration on the left hand side.
 
-B.  Adding Anti-Phishing Protection Policy
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<h1>B. Adding Anti-Phishing Protection Policy</h1>
 
 This uses machine learning and user defined rules to detect the following
 - Emails that are pretending to come from trusted domains or users
@@ -253,12 +259,12 @@ To set it up I followed the following procedures:
 <img width="1668" height="426" alt="image" src="https://github.com/user-attachments/assets/b464fea4-9c94-4b9f-91e9-f381b54886da" />
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- Module 3 : Endpoint Security
+<h1>Module 3 : Endpoint Security</h1>
 => Onboarding our test virtual machine with Microsoft Defender for endpoint so that we can start sending real endpoint telemetry. Once you are connected you will be able to detect malicious files, suspicious commands, lateral movement and many more.
 => Microsoft Defender is your Enterprise grade EDR your endpoint detection and response platform. It continuously monitors your endpoint like your test vm, for things like process executions, file creations, registry changes, network connections. 
 
-
-A. 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+A. Configuring EDR
 - Go to System > Settings > Endpoints > General > Optional Features
 - Make sure it is set to on for Enable EDR in block mode.
 - Custom network indicators is also set to ON.
@@ -266,7 +272,7 @@ A.
 - Turn ON Live response
 - Turn ON microsoft Intune connection
 
-
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 B. Onboarding the test vm 
 	-  Go to System > Settings > Endpoints > Device Management > Onboarding
 	- Select Operating System
@@ -288,14 +294,86 @@ B. Onboarding the test vm
 
 - After you have successfully onboarded the device you can see your device in Assets
   <img width="3323" height="734" alt="image" src="https://github.com/user-attachments/assets/f67ca99a-d142-4d70-8ffd-f00bfdcf8492" />
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<h1> C. Integrating Microsoft Intune to Microsoft Defender </h1>
+  Microsoft Intune is the enterprise platform which is used to manage and protect endpoints at scale. Here we are trying to configure attack surface reductions (ASR rules) which are a set of protections that help block real world malware techniques like
+  		- office macros spawning PowerShell
+		- credential theft via LSASS
+		- ransomware encryption behavior
+		- Files downloaded from the internet 
+These rules are used by real organizations to harden their endpoints
 
-  C. Integrating Microsoft Intune to Microsoft Defender
-  Microsoft Intune is the enterprise platform which is used to manage and protect endpoints at scale.
+- First heading to Microsoft Intune admin centre (intune.microsoft.com)
+- For this first we have to enroll the device which we can do it by going to Device onboarding > Enrollment > Automatic Enrollment
+  
+<img width="1005" height="926" alt="image" src="https://github.com/user-attachments/assets/ff5ac230-c514-441f-a9f9-50d7f194bae5" />
 
+- Click on Save
 
+- Then RDP into your VM and search for access work or school. click into it and again click into Join this device to Microsoft ENTRA ID.
+<img width="900" height="371" alt="image" src="https://github.com/user-attachments/assets/3cdf9fa3-1d10-4b7c-9320-a85bca706580" />
 
-<h1>Creating a conditional Policy in Entra ID </h1>
+<img width="627" height="501" alt="image" src="https://github.com/user-attachments/assets/3e8c1f0c-21c7-4a52-a9a4-f0abe49305c0" />
 
+- Then login with one of the user that you have created. Once you have successfully logged in, you would be shown like following:
+<img width="679" height="282" alt="image" src="https://github.com/user-attachments/assets/4e49e56a-e471-401c-8dd2-21580ce768f6" />
+
+- Click on Join and you are all set.
+
+- Then again RDP into the machine using credentials which you just used. Search RDP > Advanced > User Authentication > click into it.  Make sure that after we have checked this option we cannot login from the IP Address. So we have to enter our device name which we can find under our Virtual Machines > Device Information.
+- Sometimes you might get an error saying the devices are not in the same network. So for this open notepad (using administrator) > Open > C:/windows/System 32/ drivers/etc/hosts
+- 127.88.21.22 devraj-vm in this format
+ <img width="1003" height="652" alt="image" src="https://github.com/user-attachments/assets/00185e78-8ea2-46af-853f-16b2ee604e70" />
+
+- After this when we try to RDP into the machine again we should get a pop up allowing us to login with the test account. Enter the login credentials.
+	-  Then in Devices>Overview we can see our device gets onboarded.
+<img width="1942" height="926" alt="image" src="https://github.com/user-attachments/assets/8f23bcb5-fc44-4000-afd0-9533f28232c1" />
+
+After this we are going to make some changes to the settings of Microsoft Defender for endpoint under Setup.
+	- Go to Endpoint Security >Setup > Microsoft Defender for Endpoint >
+	- Put it on for following
+		- Allow Microsoft Defender for endpoint to enforce endpoint security configurations
+		- connect windows device versions 10.0.01.5603 and above to Microsoft defender for endpoint
+		- click on save
+		- Now we can put on policies to enforce 
+
+<img width="1139" height="807" alt="image" src="https://github.com/user-attachments/assets/10ba7d22-1171-48be-b66f-17c6b5850d84" />
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<h1>D. Creating Attack Surface reduction rules</h1>
+Now that our endpoint is enrolled into intune. 
+	- Go to Endpoint Security > Manage > Attack Surface Reduction > Create Policy
+		- Select the platform and profile (Attack Surface Reduction rules)
+		- Under configuration Settings 
+				- block all office applications from creating child processes
+				- Block credential stealing from the windows local security authority subsystem
+				- Use advanced protection against ransomware
+				- Block process creations originating from PSExec and WMI commands
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------		
+<h1>Module 4: Identity Protection</h1>
+
+Identity is one of the first things the attacker go to. We need to know how Entra ID helps detect it. For this we are using **Entra ID protection** which continuously monitors users sign in and monitors account behavior.
+it will looks for anomalies such as
+		- Impossible Travel
+		- Sign-ins from unfamiliar locations
+		- Password spray and brute force
+		- Token replay and session hijacking
+		- Users flagged as high-risk
+	- For this we go into **entra.microsoft.com**
+	- **User risk** means long term account risk
+	- **Sign in risk** is a risk that is tied to a specific login
+	- Conditional access is the if something is risky then do something.  
+	- Under Report we can see 
+		- Risky Users means these are the accounts that were flagged for suspicious behavior
+		- Risky sign-ins means these are the accounts with the red flags. For example sign ins from anonymous IP, impossible travel, unfamiliar signs and many more.
+
+<img width="2940" height="1258" alt="image" src="https://github.com/user-attachments/assets/2aececcf-89bd-4284-9ea2-978824152536" />
+
+- This is where Identity management and protection happens in Microsoft 365.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<h1>A. Creating a conditional Access Policy for Impossible travel </h1>
+
+If the signin looks risky then force Multi-factor authentication. or if this user is logging in from the country we dont trust then block access entirely. 
 Here we are trying to create a conditional access policy for Impossible travel
 For this go to entra.microsoft.com. Click on ID Protection > Dashboard > Conditional Access > Named Locations > Countries Location.
 <img width="1902" height="669" alt="image" src="https://github.com/user-attachments/assets/8b88ac48-3a0d-4548-98ab-4eea88338852" />
@@ -320,7 +398,7 @@ Now For example an employee of our company will try to access outlook from count
 
 
  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-<h1>Connecting Microsoft Entra ID logs into Microsoft Sentinel</h1>
+<h1>B. Connecting Microsoft Entra ID logs into Microsoft Sentinel</h1>
 To begin start heading into portal.azure.com
 Head into Microsoft Sentinel which you have created and go to Content Hub. For me at this time it is saying this portal has been moved to Microsoft Defender XDR. Just click into it and search for Entra ID and install it.
 <img width="3376" height="1270" alt="2026-07-09 17_14_29-Content hub - Microsoft Defender" src="https://github.com/user-attachments/assets/d9e3eada-a628-4515-8f58-817f7721a186" />
