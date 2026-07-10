@@ -17,14 +17,15 @@
 2. Module 2 : Email Security with Microsoft Defender for Office 365
    A. Creating two users
    B. Adding Anti-Phishing Protection Policy
+   C. Creating Safe link policy
 
-3. Module 3 : Endpoint Security
+4. Module 3 : Endpoint Security
    A. Configuring EDR
    B. Onboarding the test vm
    C. Integrating microsoft Intune to the endpoint
    D. Creating Attack Surface reduction rules
 
-4. Module 4: Identity
+5. Module 4: Identity
    A. Creating a conditional Access Policy for Impossible travel
    B. Connecting Microsoft Entra ID logs into Microsoft Sentinel
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -258,6 +259,35 @@ To set it up I followed the following procedures:
 <img width="1668" height="426" alt="image" src="https://github.com/user-attachments/assets/b464fea4-9c94-4b9f-91e9-f381b54886da" />
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<h1>C. Creating a safe link policy in Microsoft Defender XDR </h1>
+	For this first go to Microsoft Defender > Email & Collaboration > Policies & rules > Threat policies > Safe links
+ <img width="975" height="460" alt="image" src="https://github.com/user-attachments/assets/d4167f69-4819-4334-a868-ad8ff8b04219" />
+	Click on Create
+	After this, select the name and Description of it.
+<img width="975" height="436" alt="image" src="https://github.com/user-attachments/assets/68d0f248-06bc-466d-91a2-2a1a1d972c21" />
+
+	Then add the user, groups and domains that you want to add. However, for this we are just adding our domain there as shown in the screenshot below. Then click next
+ <img width="975" height="572" alt="image" src="https://github.com/user-attachments/assets/529dc954-bf13-4976-8467-8a16d01c8f01" />
+
+	In URL & click protection settings, just uncheck let users click through the original URL option. Apart from this just put everything as default. After this click Next.
+ <img width="975" height="658" alt="image" src="https://github.com/user-attachments/assets/d1f8a75b-cda1-4935-9b06-0577b3129dac" />
+
+Also make sure to turn off the Do now rewrite URLs, do checks via Safe Links API only.
+ <img width="975" height="417" alt="image" src="https://github.com/user-attachments/assets/3a3b5024-5ff0-439f-ac9e-63aed66485da" />
+
+	Then comes the notification policy on which I will select the default option and submit it.
+<img width="975" height="408" alt="image" src="https://github.com/user-attachments/assets/40ee429d-9c3e-4b1d-867e-174e523d7180" />
+ 
+	After clicking on submit it will display as New safe links policy created.
+<img width="975" height="273" alt="image" src="https://github.com/user-attachments/assets/0702580b-1e98-451b-8501-ff5c92b6f269" />
+ 
+	Then I will send the email to the user (jenny@devrajkhadka.onmicrosoft.com) that I have created earlier. 
+ <img width="975" height="1023" alt="image" src="https://github.com/user-attachments/assets/f452902d-310b-42fe-9af2-fb8377e700aa" />
+
+
+------------------------------------------------------------------------------------------------------------
+
 <h1>Module 3 : Endpoint Security</h1>
 => Onboarding our test virtual machine with Microsoft Defender for endpoint so that we can start sending real endpoint telemetry. Once you are connected you will be able to detect malicious files, suspicious commands, lateral movement and many more.
 => Microsoft Defender is your Enterprise grade EDR your endpoint detection and response platform. It continuously monitors your endpoint like your test vm, for things like process executions, file creations, registry changes, network connections. 
