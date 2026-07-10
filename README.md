@@ -1,3 +1,7 @@
+Using Office 365 E5 (no teams) with trial
+<img width="1823" height="763" alt="image" src="https://github.com/user-attachments/assets/3bda5386-46fc-4652-886d-93d555b895a4" />
+
+
 # Adding Anti-Phishing Protection Policy
 
 This uses machine learning and user defined rules to detect the following
