@@ -1,10 +1,10 @@
-Outlook (mail application) - outlook.office.com
-Microsoft 365 admin center - admin.microsoft.com
-Microsoft Azure - portal.azure.com
-Microsoft Defender XDR portal - security.microsoft.com
-It will include your defender for endpoint, defender for office, defender for identity and much more.
-Microsoft Intune - https://intune.microsoft.com/#home
-Entra ID protection - entra.microsoft.com
+Outlook (mail application) - outlook.office.com <br>
+Microsoft 365 admin center - admin.microsoft.com <br>
+Microsoft Azure - portal.azure.com <br>
+Microsoft Defender XDR portal - security.microsoft.com <br>
+It will include your defender for endpoint, defender for office, defender for identity and much more. <br>
+Microsoft Intune - https://intune.microsoft.com/#home<br>
+Entra ID protection - entra.microsoft.com<br>
 
 1 Module 1
 	a. Starting Microsoft 365 E5 (no teams) (trial) and assigning license
