@@ -1,7 +1,7 @@
-<br>Outlook (mail application) - outlook.office.com </br>
+<br> Outlook (mail application) - outlook.office.com </br>
   <br> Microsoft 365 admin center - admin.microsoft.com </br>
  <br> Microsoft Azure - portal.azure.com </br>
-  Microsoft Defender XDR portal - security.microsoft.com </br>
+  <br>Microsoft Defender XDR portal - security.microsoft.com </br>
 <br>Microsoft Intune - https://intune.microsoft.com/#home</br>
 <br>Entra ID protection - entra.microsoft.com</br>
 
